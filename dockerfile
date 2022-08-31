@@ -1,6 +1,4 @@
-FROM python
-WORKDIR /app
-COPY ip_app.py /app
-COPY requirements.txt /app
-RUN pip install -r requirements.txt
-ENTRYPOINT ["python","ip_app.py"]
+FROM ubuntu
+ARG INPUT
+ARG PACKAGE
+RUN apt update -y && apt install -y iproute2 $PACKAGE $INPUT
